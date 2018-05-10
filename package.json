@@ -1,0 +1,32 @@
+{
+  "name": "invesco",
+  "version": "0.0.1",
+  "description": "Companies in the Nasdaq 100 index based on Invesco ETF portfolio holdings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitquant/invesco.git"
+  },
+  "keywords": [
+    "nasdaq 100",
+    "ndx",
+    "companies",
+    "components",
+    "index",
+    "members"
+  ],
+  "author": "bitquant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitquant/invesco/issues"
+  },
+  "homepage": "https://github.com/bitquant/invesco#readme",
+  "dependencies": {
+    "cookie": "0.3.1",
+    "request": "2.85.0",
+    "request-promise-native": "1.0.5"
+  }
+}
