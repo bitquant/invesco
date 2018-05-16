@@ -133,13 +133,24 @@ const grabNdxCsvData = async (link) => {
 const parseCsvData = (csvData) => {
 
     var lineArray = csvData.split("\n");
-    var companyList = [];
+
+    const companyList = [];
+
+    const indexData = {
+        name: 'PowerShares QQQ',
+        symbol: null,
+        date: null,
+        companyList: companyList
+    }
 
     for (var line = 1; line < lineArray.length; line++) {
 
         var modifiedLine = lineArray[line].replace(/ ,".*"/g, "");
 
         var fieldList = modifiedLine.split(",");
+
+        indexData.symbol = fieldList[0];
+        indexData.date = fieldList[6]
 
         var companyInfo = {
             symbol: fieldList[2],
@@ -156,7 +167,13 @@ const parseCsvData = (csvData) => {
         return parseFloat(b.weight) - parseFloat(a.weight);
     });
 
-    return companyList;
+    let rank = 1;
+    for (company of companyList) {
+        company.rank = rank;
+        rank++;
+    }
+
+    return indexData;
 }
 
 const getNasdaq100 = async () => {
