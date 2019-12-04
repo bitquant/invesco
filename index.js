@@ -28,7 +28,7 @@ const parseCsvData = (csvData) => {
         var companyInfo = {
             symbol: fieldList[2],
             name: fieldList[4],
-            weight: fieldList[3]
+            weight: Number(fieldList[3])
         }
 
         if (companyInfo.symbol != "-CASH-") {
