@@ -23,7 +23,7 @@ const parseCsvData = (csvData) => {
         var fieldList = modifiedLine.split(",");
 
         indexData.symbol = fieldList[0];
-        indexData.date = fieldList[6].replace(/^\s+|\s+$/g, ''); // remove \r
+        indexData.date = fieldList[7].replace(/^\s+|\s+$/g, ''); // remove \r
 
         var companyInfo = {
             symbol: fieldList[2],
