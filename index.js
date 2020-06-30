@@ -15,15 +15,15 @@ const processCsvData = (data) => {
 
     for (let company of data) {
 
-        indexData.symbol = company['Fund Ticker'];
-        indexData.date = company['Date'];
+        indexData.symbol = company['Fund Ticker'].trim();
+        indexData.date = company['Date'].trim();
 
         var companyInfo = {
-            symbol: company['Holding Ticker'],
-            name: company['Name'],
-            weight: Number(company['Weight']),
-            class: company['Class of Shares'],
-            sector: company['Sector']
+            symbol: company['Holding Ticker'].trim(),
+            name: company['Name'].trim(),
+            weight: Number(company['Weight'].trim()),
+            class: company['Class of Shares'].trim(),
+            sector: company['Sector'].trim()
         }
 
         if (companyInfo.symbol != "-CASH-") {
