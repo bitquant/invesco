@@ -1,11 +1,8 @@
 const request = require('request-promise-native').defaults({timeout: 9000});
+const neatCsv = require('neat-csv');
 
 
-
-const parseCsvData = (csvData) => {
-
-    var lineArray = csvData.split("\n");
-    lineArray.pop();
+const processCsvData = (data) => {
 
     const companyList = [];
 
@@ -16,19 +13,17 @@ const parseCsvData = (csvData) => {
         companyList: companyList
     }
 
-    for (var line = 1; line < lineArray.length; line++) {
+    for (let company of data) {
 
-        var modifiedLine = lineArray[line].replace(/ ,".*"/g, "");
-
-        var fieldList = modifiedLine.split(",");
-
-        indexData.symbol = fieldList[0];
-        indexData.date = fieldList[7].replace(/^\s+|\s+$/g, ''); // remove \r
+        indexData.symbol = company['Fund Ticker'];
+        indexData.date = company['Date'];
 
         var companyInfo = {
-            symbol: fieldList[2],
-            name: fieldList[4],
-            weight: Number(fieldList[3])
+            symbol: company['Holding Ticker'],
+            name: company['Name'],
+            weight: Number(company['Weight']),
+            class: company['Class of Shares'],
+            sector: company['Sector']
         }
 
         if (companyInfo.symbol != "-CASH-") {
@@ -61,7 +56,8 @@ const fetchNasdaq100Holdings = async () => {
 const getNasdaq100 = async () => {
 
     const csvData = await fetchNasdaq100Holdings();
-    const companyList = parseCsvData(csvData);
+    const data = await neatCsv(csvData);
+    const companyList = processCsvData(data);
 
     return companyList;
 };

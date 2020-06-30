@@ -1,6 +1,6 @@
 {
   "name": "invesco",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Companies in the Nasdaq 100 index based on Invesco ETF portfolio holdings",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/bitquant/invesco#readme",
   "dependencies": {
+    "neat-csv": "5.2.0",
     "request": "2.88.0",
     "request-promise-native": "1.0.8"
   }
