@@ -47,7 +47,7 @@ const processCsvData = (data) => {
 const fetchNasdaq100Holdings = async () => {
 
     const options = {
-        url: 'https://www.invesco.com/us/financial-products/etfs/holdings/main/holdings/0?ticker=QQQ&action=download',
+        url: 'https://www.invesco.com/us/financial-products/etfs/holdings/main/holdings/0?audienceType=Investor&action=download&ticker=QQQ'
     };
 
     return request(options);
