@@ -23,7 +23,9 @@ const processCsvData = (data) => {
             name: company['Name'].trim(),
             weight: Number(company['Weight'].trim()),
             class: company['Class of Shares'].trim(),
-            sector: company['Sector'].trim()
+            sector: company['Sector'].trim(),
+            shares: company['Shares/Par Value'].trim(),
+            marketValue: company['MarketValue'].trim(),
         }
 
         if (companyInfo.symbol != "-CASH-") {
