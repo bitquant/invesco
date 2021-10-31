@@ -1,6 +1,6 @@
 {
   "name": "invesco",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Companies in the Nasdaq 100 index based on Invesco ETF portfolio holdings",
   "main": "index.js",
   "scripts": {

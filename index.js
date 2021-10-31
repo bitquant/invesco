@@ -55,10 +55,22 @@ const fetchNasdaq100Holdings = async () => {
     return request(options);
 }
 
+function removeDuplicateLines(csvData) {
+
+    const csvLines = csvData.split('\n');
+    csvLines.pop();
+    const headerLine = csvLines[0];
+    const adjustedLines = Array.from(new Set(csvLines.slice(1)));
+    adjustedLines.unshift(headerLine);
+    const adjustedData = adjustedLines.join('\n') + '\n';
+
+    return adjustedData;
+}
+
 const getNasdaq100 = async () => {
 
     const csvData = await fetchNasdaq100Holdings();
-    const data = await neatCsv(csvData);
+    const data = await neatCsv(removeDuplicateLines(csvData));
     const companyList = processCsvData(data);
 
     return companyList;
